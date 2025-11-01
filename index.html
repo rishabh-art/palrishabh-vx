@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>palrishabh.com</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/eb93ecbf11.js" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --bg: #FBFBFD;
+      --primary: #0B2545;
+      --accent: #FF6B35;
+      --text: #0B1220;
+      --muted: #6B7280;
+      --border: #E6E9F2;
+    }
+
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height:1.6;
+    }
+
+    /* NAV */
+    nav {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:1.5rem 5%; background:var(--bg);
+      border-bottom:1px solid var(--border);
+      position:sticky; top:0; z-index:1000;
+    }
+    nav h1 {font-family:'Poppins'; font-weight:700; color:var(--primary); font-size:1.25rem;}
+    nav ul {list-style:none; display:flex; gap:1.5rem;}
+    nav ul li a {
+      text-decoration:none; color:var(--text); font-weight:500;
+      transition:color .3s ease;
+    }
+    nav ul li a:hover {color:var(--accent);}
+
+    /* HERO */
+    #hero {padding:8rem 5%; text-align:center; background:linear-gradient(180deg,#fff 0%,#F8FAFC 100%);}
+    #hero p {color:var(--muted); font-size:1.1rem; margin-bottom:.5rem;}
+    #hero h1 {
+      font-family:'Poppins'; font-size:clamp(2.5rem,6vw,4rem);
+      color:var(--primary); font-weight:700; margin-bottom:1rem;
+    }
+    #hero h1::after {
+      content:''; display:block; width:60px; height:4px; background:var(--accent);
+      margin:0.75rem auto; border-radius:2px;
+    }
+    #hero h2 {color:var(--text); font-size:1.2rem; margin-bottom:2rem;}
+    .btn {
+      display:inline-block; padding:.75rem 1.75rem; border-radius:6px;
+      font-weight:600; text-decoration:none; transition:.3s;
+    }
+    .btn-primary {background:var(--accent); color:#fff;}
+    .btn-primary:hover {transform:translateY(-2px);}
+    .btn-outline {border:2px solid var(--primary); color:var(--primary); margin-left:1rem;}
+    .btn-outline:hover {background:var(--primary); color:#fff;}
+
+    section {padding:5rem 5%; max-width:1100px; margin:auto;}
+    section h2 {font-family:'Poppins'; font-weight:700; color:var(--primary); text-align:center; font-size:2rem; margin-bottom:2rem;}
+
+    /* ABOUT */
+    #about p {max-width:800px; margin:0 auto 2.5rem; font-size:1.05rem;}
+    .tabs {display:flex; justify-content:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem;}
+    .tab {background:var(--border); padding:.5rem 1.25rem; border-radius:6px; cursor:pointer;}
+    .tab.active {background:var(--accent); color:#fff;}
+    .tab-content {display:none;}
+    .tab-content.active {display:block; animation:fadeIn .3s;}
+    @keyframes fadeIn {from{opacity:0;} to{opacity:1;}}
+
+    /* SKILLS */
+    .skills-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:1.5rem;
+    }
+    .skill-card {
+      background:#fff; border:1px solid var(--border);
+      border-left:5px solid var(--accent);
+      padding:1.5rem; border-radius:8px;
+      transition:.3s;
+    }
+    .skill-card:hover {transform:translateY(-4px);}
+    .skill-card h4 {font-family:'Poppins'; font-weight:600; margin-bottom:.5rem; color:var(--primary);}
+    .skill-card p {color:var(--muted); font-size:.95rem;}
+
+    /* ACTIVITIES */
+    .activity {
+      margin-bottom:2rem; padding-bottom:1.5rem;
+      border-bottom:1px solid var(--border);
+    }
+    .activity h4 {font-family:'Poppins'; color:var(--primary); font-weight:600;}
+    .activity small {color:var(--muted); display:block; margin-bottom:.3rem;}
+    .activity p {color:var(--text);}
+
+    /* EDUCATION TIMELINE */
+    .timeline {
+      position:relative; margin:2rem auto; padding-left:2rem;
+      border-left:3px solid var(--accent); max-width:800px;
+    }
+    .timeline-item {margin-bottom:2rem; position:relative;}
+    .timeline-item::before {
+      content:''; position:absolute; left:-10px; top:5px;
+      width:14px; height:14px; background:var(--accent);
+      border-radius:50%;
+    }
+    .timeline-item h4 {font-family:'Poppins'; color:var(--primary);}
+    .timeline-item p {color:var(--muted); font-size:.95rem;}
+
+    /* PROJECTS */
+    .projects {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:2rem;
+    }
+    .project {
+      border-radius:10px; padding:2rem;
+      background:linear-gradient(145deg,#0B2545,#1D3557);
+      color:#fff; text-align:center;
+      transition:.3s;
+    }
+    .project h3 {font-family:'Poppins'; font-weight:600; margin-bottom:.75rem;}
+    .project a {color:var(--accent); text-decoration:none; font-weight:600;}
+
+    /* CONTACT */
+    .contact-info {text-align:center; margin-bottom:2rem;}
+    .contact-info p {margin-bottom:.75rem;}
+    form {max-width:500px; margin:auto; display:flex; flex-direction:column; gap:1rem;}
+    input, textarea {
+      padding:.75rem 1rem; border:1px solid var(--border); border-radius:6px;
+      font-family:inherit; font-size:1rem;
+    }
+    button {
+      background:var(--accent); color:#fff; border:none;
+      padding:.75rem; border-radius:6px; font-weight:600;
+      cursor:pointer; transition:.3s;
+    }
+    button:hover {transform:translateY(-2px);}
+    footer {background:var(--primary); color:#fff; text-align:center; padding:1.5rem;}
+
+    @media(max-width:768px){
+      nav ul{display:none;}
+      section{padding:3rem 1.5rem;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <h1>palrishabh.com</h1>
+  <ul>
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <p>Student Founder & Systems Thinker</p>
+  <h1>Building technology for good.</h1>
+  <h2>I create intelligent systems that make life better.</h2>
+  <a href="#projects" class="btn btn-primary">View My Work</a>
+  <a href="#contact" class="btn btn-outline">Contact Me</a>
+</section>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>
+    Hi, I’m <strong>Rishabh Pal</strong> — a student founder passionate about creating technology that uplifts people and the planet. 
+    Currently pursuing the IB Diploma Programme at Victorious Kidss Educares, I integrate leadership, AI, and systems thinking to design solutions that are useful, ethical, and enduring.
+  </p>
+
+  <div class="tabs">
+    <div class="tab active" onclick="openTab(event, 'skills')">Skills</div>
+    <div class="tab" onclick="openTab(event, 'activities')">Activities and Achievements</div>
+    <div class="tab" onclick="openTab(event, 'education')">Education</div>
+  </div>
+
+  <!-- SKILLS -->
+  <div id="skills" class="tab-content active">
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h4>Leadership</h4>
+        <p>Guiding teams from concept to execution with focus, empathy, and strategic clarity.</p>
+      </div>
+      <div class="skill-card">
+        <h4>AI / ML Development</h4>
+        <p>Designing adaptive systems that solve real-world problems and serve communities responsibly.</p>
+      </div>
+      <div class="skill-card">
+        <h4>Systems Thinking</h4>
+        <p>Understanding complexity, identifying leverage points, and improving resilience and impact.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVITIES -->
+  <div id="activities" class="tab-content">
+    <div class="activity"><h4>Teaching Physics to the Unprivileged</h4><small>2025</small><p>Visited BVJSS to teach underprivileged students the fundamentals of Physics—strengthening their foundations and inspiring long-term curiosity and careers in science.</p></div>
+    <div class="activity"><h4>‘No Single Use Plastic’: A Local Drive</h4><small>Sept 2024</small><p>Led an awareness campaign during Ganesh Chaturthi, engaging communities and security teams through speeches and posters to reduce single-use plastics—building toward a future of tech-driven sustainability outreach.</p></div>
+    <div class="activity"><h4>Founding of DROPLETS</h4><small>2024–2025</small><p>Founded an IoT + AI-based project to reduce hotel water consumption—turning smart data into sustainable action.</p></div>
+    <div class="activity"><h4>Won Best Delegate at WHISMUN 2024</h4><small>August 2024</small><p>Represented the Republic of Korea in DISEC and received the Best Delegate award, strengthening diplomatic communication and analytical thinking.</p></div>
+    <div class="activity"><h4>Initiative ‘Quantributum’</h4><small>16 August 2024</small><p>Launched a self-initiated medicine collection and distribution campaign for underprivileged communities—proving how small organized actions can save lives. Scaling this up right now as setu™.</p></div>
+    <div class="activity"><h4>Attended ESROMAGICA Workshop</h4><small>August 2024</small><p>Completed a 4-day ISRO-focused workshop exploring satellite payloads, orbit transfers, and mission efficiency—deepening my understanding of applied Physics.</p></div>
+    <div class="activity"><h4>Finished DROPLETS MVP</h4><small>30 January 2025</small><p>Completed the first working prototype of DROPLETS as my IB MYP Personal Project—showing that even acoustics and water can be connected through creativity and science.</p></div>
+    <div class="activity"><h4>E-assessment Prep Group</h4><small>Nov 2024 – Today</small><p>Founded a free initiative helping 40+ students prepare for IB MYP e-assessments with personalised online teaching across subjects.</p></div>
+    <div class="activity"><h4>Blissful Breaks</h4><small>12–26 March 2025</small><p>Organised a school-wide event promoting stress management through performance and community—learning crowd coordination and wellness-focused leadership.</p></div>
+    <div class="activity"><h4>Founded The IB Guys & AdaptEd</h4><small>May 2025 – Now</small><p>Co-founded “The IB Guys,” where I lead operations and conceptualised AdaptEd—an AI-powered personalised education platform.</p></div>
+    <div class="activity"><h4>Founded setu™</h4><small>June 2025 – Now</small><p>Started setu™, a tech platform bridging givers and those in need—turning compassion into structured impact through technology.</p></div>
+    <div class="activity"><h4>VKE MUN 2025 Edition</h4><small>23–24 August 2025</small><p>Led a 20+ member team to organise an MUN with 100+ delegates from 10+ schools within 30 days—showing that structured teamwork can achieve exceptional results.</p></div>
+    <div class="activity"><h4>Head Boy at VKE</h4><small>October 2025</small><p>Excited to have been elected as the Head Boy at VKE giving me an opportunity to bring systems thinking and collaboration to empower the council and serve the school.</p></div>
+</div>
+
+  <!-- EDUCATION -->
+  <div id="education" class="tab-content">
+    <div class="timeline">
+        <div class="timeline-item"><h4>Bishop Cottons Boys' school, Bangalore</h4><p>~2013-2019</p></div>
+      <div class="timeline-item"><h4>St. Peters School, Barcelona</h4><p>2019–2021</p></div>
+      <div class="timeline-item"><h4>IBMYP at Victorious Kidss Educares (MYP3–MYP5)</h4><p>2022–2025</p></div>
+      <div class="timeline-item"><h4>IB Diploma Programme, Victorious Kidss Educares</h4><p>2025–Now</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects">
+    <div class="project"><h3>DROPLETS</h3><p>AI + IoT innovation that conserves water in hospitality spaces through smart acoustic detection.</p><a href="https://droplets.techwell.biz" target="_blank">View Project</a></div>
+    <div class="project"><h3>setu™</h3><p>A technology platform connecting those who can give with those in need — bridging hearts through innovation.</p><a href="https://setu.palrishabh.com" target="_blank">View Project</a></div>
+    <div class="project"><h3>AdaptEd</h3><p>Personalised learning, reimagined. Coming soon — an AI-driven education platform designed to adapt to you.</p><a href="#" onclick="alert('AdaptEd is under development — stay tuned!')">Coming Soon</a></div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="contact-info">
+    <p><i class="fa-solid fa-paper-plane"></i> contact@palrishabh.com</p>
+    <p><i class="fa-solid fa-phone"></i> +91 7558522471</p>
+  </div>
+  <form action="https://formsubmit.co/contact@palrishabh.com" method="POST">
+    <input type="hidden" name="_next" value="postsubmit.html">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  <p>© 2025 palrishabh.com — built with ❤️ by Rishabh Pal</p>
+</footer>
+
+<script>
+  function openTab(evt, tabName) {
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+    evt.currentTarget.classList.add('active');
+    document.getElementById(tabName).classList.add('active');
+  }
+</script>
+</body>
+</html>
